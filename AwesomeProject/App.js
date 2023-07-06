@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, ImageBackground } from 'react-native';
+import RegistrationScreen from './Screens/RegistrationScreen/RegistrationScreen';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text >Hello world!</Text>
-      <Text>I`m first project</Text>
+    <ImageBackground source={require('./PhotoBG.png')} resizeMode="cover" style={styles.imageBackground}>
+      <RegistrationScreen />
+    </ImageBackground>
       <StatusBar style="auto" />
     </View>
   );
@@ -18,4 +21,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 24,
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: 'center',
+    width: 400,
+    
+  }
 });
