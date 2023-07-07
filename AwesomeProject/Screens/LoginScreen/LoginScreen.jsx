@@ -6,21 +6,15 @@ import { Button } from "../components/Button";
 import { LoginCreateLink } from "../components/LoginCreateLink";
 import { Avatar } from "../components/Avatar";
 
-export default class RegistrationScreen extends Component {
+export default class LoginScreen extends Component {
   state = {};
 
   render() {
     return (
-      <View style={styles.containerRegistration}>
-        <Avatar />
-        <Title title="Реєстрація" />
+      <View style={styles.containerLogin}>
+        <Title title="Увійти" />
         <View style={styles.form}>
           <KeyboardAvoidingView behavior="padding">
-            <FormTextInput
-              style={styles.formInput}
-              placeholder="Логін"
-              placeholderTextColor="#BDBDBD"
-            />
             <FormTextInput
               keyboardType="email-address"
               style={styles.formInput}
@@ -33,8 +27,8 @@ export default class RegistrationScreen extends Component {
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
             />
-            <Button title={'Зареєструватися'}/>
-          </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+            <Button title={'Увійти'}/>
           <LoginCreateLink content={"Вже є акаунт? Увійти"} />
         </View>
       </View>
@@ -43,12 +37,12 @@ export default class RegistrationScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  containerRegistration: {
+  containerLogin: {
     marginTop: 255,
     backgroundColor: "#fff",
     alignItems: "center",
     height: 549,
-    paddingTop: 92,
+    paddingTop: 32,
     paddingBottom: 45,
     paddingLeft: 15,
     paddingRight: 15,

@@ -7,7 +7,6 @@ function Avatar() {
         <Pressable style={styles.addSvg}>
         <Image source={require('../images/add.png')}/>
         </Pressable>
-        
     </View>
     
   );

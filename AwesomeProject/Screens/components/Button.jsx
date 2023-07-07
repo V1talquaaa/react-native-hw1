@@ -1,10 +1,10 @@
-import { StyleSheet, Pressable, Text } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-function Button() {
+function Button({title}) {
   return (
-    <Pressable style={styles.button}>
-    <Text style={styles.buttonTitle}>Зареєструватися</Text>
-    </Pressable>
+    <TouchableOpacity style={styles.button}>
+    <Text style={styles.buttonTitle}>{title}</Text>
+    </TouchableOpacity>
   );
 }
 
