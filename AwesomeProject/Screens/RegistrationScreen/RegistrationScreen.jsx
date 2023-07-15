@@ -1,46 +1,66 @@
 import { Component } from "react";
-import { View, StyleSheet, KeyboardAvoidingView } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { Title } from "../components/Title";
 import { FormTextInput } from "../components/FormTextInput";
 import { Button } from "../components/Button";
 import { LoginCreateLink } from "../components/LoginCreateLink";
 import { Avatar } from "../components/Avatar";
+import { useState } from "react";
 
-export default class RegistrationScreen extends Component {
-  state = {};
+export default  RegistrationScreen = () => {
+  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  render() {
+  const onRegister = () => {
+    if(login && email && password !== '') {
+      console.log({
+        login: login,
+        email: email,
+        password: password
+      })
+    }
+  }
+
     return (
-      <View style={styles.containerRegistration}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>      
+        <View style={styles.containerRegistration}>
         <Avatar />
         <Title title="Реєстрація" />
         <View style={styles.form}>
-          <KeyboardAvoidingView behavior="padding">
+          <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
             <FormTextInput
               style={styles.formInput}
               placeholder="Логін"
               placeholderTextColor="#BDBDBD"
+              value={login}
+              onChangeText={setLogin}
             />
             <FormTextInput
               keyboardType="email-address"
               style={styles.formInput}
               placeholder="Адреса електронної пошти"
               placeholderTextColor="#BDBDBD"
+              value={email}
+              onChangeText={setEmail}
             />
             <FormTextInput
               secureTextEntry={true}
               style={styles.formInput}
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
+              value={password}
+              onChangeText={setPassword}
             />
-            <Button title={'Зареєструватися'}/>
+            <Button title={'Зареєструватися'} onPress={onRegister}/>
           </KeyboardAvoidingView>
           <LoginCreateLink content={"Вже є акаунт? Увійти"} />
         </View>
       </View>
+      </TouchableWithoutFeedback>
+
     );
   }
-}
 
 const styles = StyleSheet.create({
   containerRegistration: {
@@ -56,3 +76,4 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 25,
   },
 });
+

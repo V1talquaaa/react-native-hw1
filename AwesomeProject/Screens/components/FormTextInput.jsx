@@ -5,6 +5,8 @@ function FormTextInput({
   placeholderTextColor,
   secureTextEntry,
   keyboardType,
+  value,
+  onChangeText,
 }) {
   return (
     <TextInput
@@ -13,6 +15,9 @@ function FormTextInput({
       placeholderTextColor={placeholderTextColor}
       secureTextEntry={secureTextEntry}
       keyboardType={keyboardType}
+      value={value}
+      onChangeText={onChangeText}
+
     ></TextInput>
   );
 }
