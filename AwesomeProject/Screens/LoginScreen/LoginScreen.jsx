@@ -13,7 +13,7 @@ import { FormTextInput } from "../../components/FormTextInput";
 import { Button } from "../../components/Button";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { useRoute } from '../../router';
+
 
 export default LoginScreen = () => {
   const [email, setEmail] = useState();
@@ -23,8 +23,9 @@ export default LoginScreen = () => {
   const onLogin = () => {
     if (email && password !== "")
       console.log({ email: email, password: password });
-      useRoute(true);
+      navigation.navigate("Home")
   };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ImageBackground
