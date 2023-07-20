@@ -1,16 +1,16 @@
-import { Component } from "react";
-import { View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
-import { Title } from "../components/Title";
-import { FormTextInput } from "../components/FormTextInput";
-import { Button } from "../components/Button";
-import { LoginCreateLink } from "../components/LoginCreateLink";
-import { Avatar } from "../components/Avatar";
+import { View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Text, Pressable, ImageBackground } from "react-native";
+import { Title } from "../../components/Title";
+import { FormTextInput } from "../../components/FormTextInput";
+import { Button } from "../../components/Button";
+import { Avatar } from "../../components/Avatar";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default  RegistrationScreen = () => {
   const [login, setLogin] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
   const onRegister = () => {
     if(login && email && password !== '') {
@@ -23,12 +23,13 @@ export default  RegistrationScreen = () => {
   }
 
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>      
+      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>   
+        <ImageBackground source={require('../../images/PhotoBG.png')}  resizeMode="cover" style={styles.imageBackground}>   
         <View style={styles.containerRegistration}>
         <Avatar />
         <Title title="Реєстрація" />
         <View style={styles.form}>
-          <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
             <FormTextInput
               style={styles.formInput}
               placeholder="Логін"
@@ -53,11 +54,18 @@ export default  RegistrationScreen = () => {
               onChangeText={setPassword}
             />
             <Button title={'Зареєструватися'} onPress={onRegister}/>
-          </KeyboardAvoidingView>
-          <LoginCreateLink content={"Вже є акаунт? Увійти"} />
+            <View style={styles.bottomTextWrap}>
+            <Text>Вже є аккаунт?</Text>
+              <Pressable style={styles.linkWrap} onPress={() => navigation.navigate("LoginScreen")}>
+                <Text style={styles.refLink}>Увійти</Text>
+              </Pressable>
+          </View>
+          
         </View>
       </View>
+      </ImageBackground>
       </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
 
     );
   }
@@ -74,6 +82,15 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+  },
+  bottomTextWrap: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 15
+  },
+  refLink: {
+    color: "#1B4371",
+    marginLeft: 5
   },
 });
 
