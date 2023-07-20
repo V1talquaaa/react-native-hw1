@@ -1,5 +1,4 @@
-import { Text, View, StyleSheet, Pressable, Image } from "react-native"
-import { Button } from "../../components/Button"
+import { Text, View, StyleSheet  } from "react-native"
 
 const PostScreen = () => {
     return (

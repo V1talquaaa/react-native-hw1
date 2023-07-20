@@ -5,11 +5,8 @@ import CreateScreen from './Screens/MainScreen/CreateScreen';
 import ProfileScreen from './Screens/MainScreen/ProfileScreen';
 import RegistrationScreen from './Screens/RegistrationScreen/RegistrationScreen';
 import LoginScreen from './Screens/LoginScreen/LoginScreen';
-import { Ionicons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons';
-import {Feather} from '@expo/vector-icons';
 import { Image } from "react-native";
-import { Button } from "./components/Button";
+
 
 
 
