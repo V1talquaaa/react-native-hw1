@@ -1,23 +1,4 @@
-// import { Text, View, StyleSheet  } from "react-native"
 
-// const PostScreen = () => {
-//     return (
-//         <View style={styles.container}>
-//             <Text>PostScreen is here</Text>
-//         </View>
-//     )
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center'
-//     },
-
-// })
-
-// export default PostScreen
 import React from 'react';
 import { View, TouchableOpacity, Image, StyleSheet, Text } from 'react-native';
 
