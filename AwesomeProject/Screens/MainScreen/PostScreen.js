@@ -1,42 +1,21 @@
-
-import React from 'react';
-import { View, TouchableOpacity, Image, StyleSheet, Text } from 'react-native';
-
-const PostScreen = ({ navigation }) => {
-
-  const handleButtonPress = () => {
-    console.log('Button "Публікації" pressed');
-  };
-
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity onPress={handleButtonPress}>
-          <Image
-            source={require('../../images/log-out.png')}
-            style={{ marginRight: 15 }}
-            fadeDuration={0}
-          />
-        </TouchableOpacity>
-      ),
-    });
-  }, [navigation]);
-
-      return (
-        <View style={styles.container}>
-            <Text>PostScreen is here</Text>
-        </View>
-    )
-};
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import DefaultPostScreen from "../nestedScreens/DefaultPostScreen"
+import CommentsScreen from "../nestedScreens/CommentsScreen";
+import MapScreen from "../nestedScreens/MapScreen";
 
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
+const NestedScreen = createStackNavigator();
 
-})
+const PostScreen = () => {
+  return(
+  <NestedScreen.Navigator>
+  <NestedScreen.Screen name="DefaultScreen" component={DefaultPostScreen} options={{headerShown: false}}></NestedScreen.Screen>
+  <NestedScreen.Screen name="Comments" component={CommentsScreen}></NestedScreen.Screen>
+  <NestedScreen.Screen name="MapScreen" component={MapScreen}></NestedScreen.Screen>
+</NestedScreen.Navigator>
+  )
 
-export default PostScreen;
+}
+
+export default PostScreen
